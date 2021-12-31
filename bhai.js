@@ -3,6 +3,10 @@ const form = document.querySelector('form');
 const radius = document.querySelector('#radius-input');
 const angle = document.querySelector('#angle-input');
 const PI = document.querySelector('#station-input');
+//Inputs Values Print
+const radiusOutput = document.querySelector('#radius-output');
+const angleOutput = document.querySelector('#angle-output');
+const piOutput = document.querySelector('#pi-output');
 //table body
 const tableBody = document.querySelector('#table-body');
 //results using formulae
@@ -14,6 +18,10 @@ let n = 1;
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
+
+    radiusOutput.innerHTML = "<b>Radius Of Curve(R):</b>" + " " + radius.value;
+    angleOutput.innerHTML =  "<b>angle of Deflection(▲):</b>" + " " + angle.value;   
+    piOutput.innerHTML =    "<b>PI Station:</b>" + " " + PI.value;
 
     let PCstationValue = (parseInt(PI.value - radius.value * Math.tan((angle.value * Math.PI / 180) / 2)));
     PCstation.innerHTML = "<b>PC Station:</b>" + " " + PCstationValue;
@@ -82,6 +90,8 @@ form.addEventListener('submit', (event) => {
         let x = parseInt(tdTwo.textContent);
         tdThree.textContent = parseFloat((180 * x) / (2 * Math.PI * parseInt(radiusValue))).toFixed(2);
 
+        const alltdThree = document.querySelectorAll('.tdThree');
+        console.log(alltdThree[j]);
     }
  
 });
